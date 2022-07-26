@@ -1,0 +1,65 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AdminEntity {
+  confirmEmail: Boolean!
+  createdAt: DateTime!
+  email: String!
+  id_admin: ID!
+  name: String!
+  password: String!
+  upatedAt: DateTime!
+}
+
+type AdminEntityToken {
+  confirmEmail: Boolean!
+  createdAt: DateTime!
+  email: String!
+  id_admin: ID!
+  name: String!
+  token: String!
+  upatedAt: DateTime!
+}
+
+input CreateAdminInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input LoginAdminInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createAdmin(createAdminInput: CreateAdminInput!): AdminEntityToken!
+  forgotPassword(email: String!): String!
+  loginAdmin(LoginAdminInput: LoginAdminInput!): AdminEntityToken!
+  remove(id_admin: Float!): Float!
+  resetPassword(resetPasswordAdminInput: ResetPasswordAdminInput!): AdminEntity!
+  updateAdmin(id: Float!, updateAdminInput: UpdateAdminInput!): AdminEntity!
+}
+
+type Query {
+  getAdminByEmail(email: String!): AdminEntity!
+  getAllAdmins: [AdminEntity!]!
+  getOneAdmin(id_admin: Float!): AdminEntity!
+  testGetOneAdmin(id_admin: Float!): AdminEntity!
+}
+
+input ResetPasswordAdminInput {
+  code: String!
+  email: String!
+  password: String!
+}
+
+input UpdateAdminInput {
+  id_admin: ID!
+}
